@@ -81,7 +81,10 @@
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
 
-         renderer.setViewport( 0, 0, width, height );// 注視点を各視点の中心に持ってくる
+// -0.5w, 0
+// 0.5w
+         renderer.setViewport( left, 0, width, height );// 注視点を各視点の中心に持ってくる
+//         renderer.setViewport( left-0.5*w, 0, width, height );// 注視点を各視点の中心に持ってくる
          renderer.setScissor( left, 0, width, height );// 画面の半分だけ更新
          camera.aspect = width / height;
          camera.updateProjectionMatrix();
