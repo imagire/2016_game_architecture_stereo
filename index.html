@@ -27,8 +27,9 @@
       var near = 0.1;// 視錐台の全面までの距離
       var far = 100.0;// 視錐台の後ろまでの距離 
       for(var i in views){
-        camera = new THREE.PerspectiveCamera( fov, width / height, near, far );
-        camera.position.set(views[i].eye);
+      	view = views[i];
+       	camera = new THREE.PerspectiveCamera( fov, width / height, near, far );
+        camera.position.set(view.eye);
         view.camera = camera;
       }
       
