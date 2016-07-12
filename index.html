@@ -30,7 +30,7 @@
         view = views[i];
         camera = new THREE.PerspectiveCamera( fov, width / height, near, far );
         camera.position.set(view.eye[0], view.eye[1], view.eye[2]);
-        camera.lookat(0, 0, 0);
+        camera.lookat.set(0, 0, 0);
         view.camera = camera;
       }
       
