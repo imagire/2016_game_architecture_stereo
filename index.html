@@ -76,7 +76,7 @@
           renderer.setScissor( left, 0, w, h );
           renderer.setScissorTest( true );
 
-          camera.setViewOffset(width, height, left,0, w, h);
+          camera.setViewOffset(width, height, -left,0, w, h);
           renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
           renderer.render( scene, camera ); // 物体を描画
