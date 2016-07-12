@@ -74,13 +74,12 @@
           var left   = Math.floor( width  * view.left );
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
-          renderer.setScissor( left, 0, w, h );
-          renderer.setScissorTest( true );
 
-          camera.setViewOffset(width, height, 0.5*w, 0, w, h);
-
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
+					renderer.setViewport( left, 0, width, height );
+					renderer.setScissor( left, 0, width, height );
+					renderer.setScissorTest( true );
+					camera.aspect = width / height;
+					camera.updateProjectionMatrix();
 
           renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
