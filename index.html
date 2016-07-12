@@ -47,7 +47,7 @@
       var material = new THREE.MeshLambertMaterial( { color: 'skyblue' } ) // マテリアルの作成（青）
       for(var i = 0; i < 10; i++){
         var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
-        mesh.position.z = i;
+        mesh.position.z = i * 10;
         scene.add(mesh); // シーンに配置
       }
 
