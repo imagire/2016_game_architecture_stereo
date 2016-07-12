@@ -1,1 +1,0 @@
-# 2016_game_architecture_stereo
