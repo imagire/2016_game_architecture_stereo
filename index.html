@@ -29,7 +29,7 @@
       for(var i in views){
       	view = views[i];
        	camera = new THREE.PerspectiveCamera( fov, width / height, near, far );
-        camera.position.set(view.eye);
+        camera.position.set(view.eye[0], view.eye[1], view.eye[2]);
         view.camera = camera;
       }
       
