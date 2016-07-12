@@ -66,6 +66,8 @@
         mesh.rotation.x += 0.01;
         mesh.rotation.y += 0.01;
         
+       renderer.setScissorTest( true );// 画面分割の切断処理の有効化
+
         for(var i in views){
           view = views[i];
           camera = view.camera;
@@ -75,9 +77,8 @@
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
 
-         renderer.setViewport( left - 0.5 * w, 0, width, height );
-         renderer.setScissor( left, 0, width, height );
-         renderer.setScissorTest( true );
+         renderer.setViewport( left - 0.5 * w, 0, width, height );// 注視点を各ビューポートの中心に持ってくる
+         renderer.setScissor( left, 0, width, height );// 画面の半分だけ更新
          camera.aspect = width / height;
          camera.updateProjectionMatrix();
 
