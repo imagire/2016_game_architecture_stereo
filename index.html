@@ -77,7 +77,7 @@
           renderer.setScissor( left, 0, w, h );
           renderer.setScissorTest( true );
 
-          camera.aspect = w / h;
+          camera.aspect = width / height;
           camera.setViewOffset(width, height, 0,0, w, h);
           camera.updateProjectionMatrix();
           
