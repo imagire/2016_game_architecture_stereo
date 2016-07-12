@@ -80,9 +80,9 @@
 
           // カメラの射影行列の設定
           camera.aspect = w / h;
-          camera.updateProjectionMatrix();
           camera.setViewOffset( width, height, left, 0, w, h );
-    
+          camera.updateProjectionMatrix();
+
           renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
           renderer.render( scene, camera ); // 物体を描画
