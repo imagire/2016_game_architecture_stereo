@@ -44,8 +44,8 @@
       directionalLight.position.set( 0.2, 0.7, 0.5 );// 平行光源の向き
       scene.add( directionalLight );// シーンに配置
       
-      var geometry = new THREE.CubeGeometry(10, 10, 10); // 四角形の生成
-//      var geometry = new THREE.CubeGeometry(1, 1, 1); // 四角形の生成
+//      var geometry = new THREE.CubeGeometry(10, 10, 10); // 四角形の生成
+      var geometry = new THREE.CubeGeometry(1, 1, 1); // 四角形の生成
       var material = new THREE.MeshLambertMaterial( { color: 'skyblue' } ) // マテリアルの作成（青）
       var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
       scene.add(mesh); // シーンに配置
