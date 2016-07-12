@@ -75,7 +75,7 @@
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
 
-         renderer.setViewport( 0, 0, width, height );
+         renderer.setViewport( left - 0.5 * w, 0, width, height );
          renderer.setScissor( left, 0, width, height );
          renderer.setScissorTest( true );
          camera.aspect = width / height;
