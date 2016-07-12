@@ -77,9 +77,10 @@
           renderer.setScissor( left, 0, w, h );
           renderer.setScissorTest( true );
 
+          camera.setViewOffset(width, height, 0, 0, w, h);
+
           camera.aspect = w / h;
           camera.updateProjectionMatrix();
-          camera.setViewOffset(w, h, 0, 0, w, h);
 
           renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
