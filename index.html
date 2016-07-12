@@ -69,11 +69,10 @@
           
           // レンダラのビューポートの設定
 					var left   = Math.floor( width  * view.left );
-					var bottom = Math.floor( height );
 					var w  = Math.floor( width >> 1 );
 					var h = Math.floor( height );
-					renderer.setViewport( left, bottom, w, h );
-					renderer.setScissor( left, bottom, w, h );
+					renderer.setViewport( left, 0, w, h );
+					renderer.setScissor( left, 0, w, h );
 					renderer.setScissorTest( true );
           
           // カメラの射影行列の設定
