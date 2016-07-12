@@ -15,11 +15,11 @@
       var views = [
         {
           left: 0.0,
-          eye:[ -0.25, 7, 10],
+          eye:[ -0.25, 3, 5],
         },
         {
           left: 0.5,
-          eye:[ +0.25, 7, 10],
+          eye:[ +0.25, 3, 5],
         },
       ];
       
@@ -51,8 +51,8 @@
         for(var z = 0; z < 3; z++){
           var material = new THREE.MeshLambertMaterial( { color: Math.floor( Math.random() * 0xffffff ) } ) // マテリアルの作成（青）
           var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
-          mesh.position.x = x * 3;
-          mesh.position.z = -z * 3;
+          mesh.position.x = x * 2;
+          mesh.position.z = -z * 2;
           meshes[idx++] = mesh;
           scene.add(mesh); // シーンに配置
         }
