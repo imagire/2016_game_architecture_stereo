@@ -15,15 +15,15 @@
       var views = [
         {
           left: 0.0,
-          eye:[ -0.3, 2, 10],
+          eye:[ -0.03, 2, 10],
         },
         {
           left: 0.5,
-          eye:[ +0.3, 2, 10],
+          eye:[ +0.03, 2, 10],
         },
       ];
       
-      var fov = 40;//視野角
+      var fov = 50;//視野角
       var near = 0.1;// 視錐台の全面までの距離
       var far = 100.0;// 視錐台の後ろまでの距離 
       for(var i in views){
@@ -89,7 +89,7 @@
           var left   = Math.floor( width  * view.left );
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
-          var separation_distance = 0.289*width;
+          var separation_distance = 0.24*width;
           if(i == 0) separation_distance = -separation_distance;// ０の時は反対方向にずれる
 
            renderer.setViewport( separation_distance, 0, width, height );// 注視点を各視点の中心に持ってくる
