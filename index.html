@@ -45,10 +45,16 @@
       
       var geometry = new THREE.CubeGeometry(1, 1, 1); // 四角形の生成
       var material = new THREE.MeshLambertMaterial( { color: 'skyblue' } ) // マテリアルの作成（青）
-      for(var i = 0; i < 10; i++){
-        var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
-        mesh.position.z = -i * 10;
-        scene.add(mesh); // シーンに配置
+      var meshes = [];
+      var idx = 0;
+      for(var x = -1; x <= 1; x++){
+        for(var z = 0; z < 3; z++){
+          var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
+          mesh.position.x = x * 2;
+          mesh.position.z = -z * 2;
+          meshes[idx++] = mesh;
+          scene.add(mesh); // シーンに配置
+        }
       }
 
       function updateSize() {
@@ -64,8 +70,11 @@
         updateSize();// 画面サイズの更新
         
         // 少しずつ回転
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.01;
+        for(var i in meshes){
+          var mesh = meshes[i];
+          mesh.rotation.x += 0.01;
+          mesh.rotation.y += 0.01;
+        }
         
         // *** 描画 ***
         
@@ -80,20 +89,13 @@
           var left   = Math.floor( width  * view.left );
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
+          var separation_distance = 0.2*w;
+          if(i == 0) separation_distance = -separation_distance;// ０の時は反対方向にずれる
 
-        if(0==i){
-           renderer.setViewport( -0.1*w, 0, width, height );// 注視点を各視点の中心に持ってくる
-        }else{
-           renderer.setViewport( 0.01*w, 0, width, height );// 注視点を各視点の中心に持ってくる
-        }
-
-// -0.5w, -0.25w
-// 0.5w, -0.5w
-//         renderer.setViewport( -0.5*w, 0, width, height );// 注視点を各視点の中心に持ってくる
-//         renderer.setViewport( left-0.5*w, 0, width, height );// 注視点を各視点の中心に持ってくる
-         renderer.setScissor( left, 0, width, height );// 画面の半分だけ更新
-         camera.aspect = width / height;
-         camera.updateProjectionMatrix();
+           renderer.setViewport( separation_distance, 0, width, height );// 注視点を各視点の中心に持ってくる
+           renderer.setScissor( left, 0, width, height );// 画面の半分だけ更新
+           camera.aspect = width / height;
+           camera.updateProjectionMatrix();
 
 //          renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
