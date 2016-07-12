@@ -82,6 +82,8 @@
           camera.aspect = w / h;
           camera.updateProjectionMatrix();
           camera.setViewOffset( width, height, left, 0, w, h );
+    
+          renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
           renderer.render( scene, camera ); // 物体を描画
         }
