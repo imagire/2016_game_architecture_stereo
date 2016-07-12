@@ -45,7 +45,7 @@
       
       var geometry = new THREE.CubeGeometry(1, 1, 1); // 四角形の生成
       var material = new THREE.MeshLambertMaterial( { color: 'skyblue' } ) // マテリアルの作成（青）
-      for(int i = 0; i < 10; i++){
+      for(var i = 0; i < 10; i++){
         var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
         mesh.position.z = i;
         scene.add(mesh); // シーンに配置
