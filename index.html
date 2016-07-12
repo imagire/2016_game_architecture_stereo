@@ -81,6 +81,12 @@
           var w  = Math.floor( width >> 1 );
           var h = Math.floor( height );
 
+        if(0===i){
+           renderer.setViewport( -0.25*w, 0, width, height );// 注視点を各視点の中心に持ってくる
+        }else{
+           renderer.setViewport( -0.25*w, 0, width, height );// 注視点を各視点の中心に持ってくる
+        }
+
 // -0.5w, -0.25w
 // 0.5w, -0.5w
          renderer.setViewport( -0.5*w, 0, width, height );// 注視点を各視点の中心に持ってくる
