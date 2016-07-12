@@ -15,11 +15,11 @@
       var views = [
         {
           left: 0.0,
-          eye:[ -1.0, 0, 7],
+          eye:[ -0.0, 0, 7],
         },
         {
           left: 0.5,
-          eye:[ +1.0, 0, 7],
+          eye:[ +0.0, 0, 7],
         },
       ];
       
@@ -76,7 +76,8 @@
           renderer.setScissor( left, 0, w, h );
           renderer.setScissorTest( true );
 
-//          renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
+          camera.setViewOffset(width, height, 0,0, w, h);
+          renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
           renderer.render( scene, camera ); // 物体を描画
         }
