@@ -28,7 +28,7 @@
       var far = 100.0;// 視錐台の後ろまでの距離 
       for(var i in views){
         view = views[i];
-        camera = new THREE.PerspectiveCamera( fov, 0.5 * width / height, near, far );
+        camera = new THREE.PerspectiveCamera( fov, width / height, near, far );
         camera.position.set(view.eye[0], view.eye[1], view.eye[2]);
         view.camera = camera;
       }
@@ -78,9 +78,9 @@
           renderer.setScissorTest( true );
 
           camera.aspect = width / height;
-          camera.setViewOffset(width, height, w,0, w, h);
           camera.updateProjectionMatrix();
-          
+          camera.setViewOffset(width, height, w, 0, w, h);
+
           renderer.setClearColor( i == 0 ? 'cornsilk' : 'palegreen' );
 
           renderer.render( scene, camera ); // 物体を描画
