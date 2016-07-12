@@ -11,12 +11,28 @@
       var scene = new THREE.Scene(); // Three.js シーンオブジェクトの生成
       var width = window.innerWidth;//表示領域の大きさを取得
       var height = window.innerHeight;
+      
+      var views = [
+        {
+          left: 0.0,
+          eye:[ -0, 0, 10],
+        },
+        {
+          left: 0.5,
+          eye:[ +0, 0, 10],
+        },
+      ];
+      
       var fov = 50;//視野角
       var near = 0.1;// 視錐台の全面までの距離
       var far = 100.0;// 視錐台の後ろまでの距離 
-      var camera = new THREE.PerspectiveCamera(fov, width / height, near, far); // カメラの設定
-      camera.position.set( 0, 0, 10 );
-  
+      for(var i in views){
+        camera = new THREE.PerspectiveCamera( fov, width / height, near, far );
+        camera.position.set(views[i].eye);
+        view.camera = camera;
+      }
+      
+      
       var renderer = new THREE.WebGLRenderer();// WebGLのレンダラを生成
       renderer.setSize(width, height); // ビューポートの大きさを設定
       document.body.appendChild(renderer.domElement); // レンダラをbodyに紐づけ
@@ -30,14 +46,41 @@
       var mesh = new THREE.Mesh(geometry, material); // メッシュとマテリアルからオブジェクトを生成
       scene.add(mesh); // シーンに配置
   
+			function updateSize() {
+
+				if ( width != window.innerWidth || height != window.innerHeight ) {
+					width  = window.innerWidth;
+					height = window.innerHeight;
+					renderer.setSize ( width, height );
+				}
+			}
       (function update() {
         requestAnimationFrame(update); // ブラウザを更新するためのリクエスト
+        updateSize();// 画面サイズの更新
         
         // 少しずつ回転
         mesh.rotation.x += 0.01;
         mesh.rotation.y += 0.01;
-  
-        renderer.render(scene, camera); // 物体を描画
+        
+        for(var i in views){
+          view = views[i];
+          camera = view.camera;
+          
+          // レンダラのビューポートの設定
+					var left   = Math.floor( width  * left );
+					var bottom = Math.floor( height );
+					var w  = Math.floor( width >> 1 );
+					var h = Math.floor( height );
+					renderer.setViewport( left, bottom, w, h );
+					renderer.setScissor( left, bottom, w, h );
+					renderer.setScissorTest( true );
+          
+          // カメラの射影行列の設定
+					camera.aspect = w / h;
+					camera.updateProjectionMatrix();
+
+					renderer.render( scene, camera ); // 物体を描画
+        }
       })();// 定義してそのまま起動
     </script>
   </body>
